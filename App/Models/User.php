@@ -17,6 +17,15 @@ class User extends Model
     public $email;
     public $name;
     
+    public static function findAll(int $cnt)
+    {
+        $db = new Db();
+        return $db->query(
+            'SELECT * FROM ' . static::TABLE,
+            static::class
+        );
+    }
+    
     public static function findById($id)
     {
         $db = new Db();

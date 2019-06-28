@@ -6,10 +6,25 @@
  * Time: 21:37
  */
 require_once 'autoload.php';
+
+use \App\Model;
+use \App\Models\User;
+
 $news = \App\Models\News::findAll(3);
+$users = \App\Models\User::findAll(0);
+
+function sendEmail(User $user, string $message)
+{
+    echo 'Почта уходит на ' . $user->email;
+}
+
+sendEmail($users[2], 'Hello!!!');
 
 
-require_once __DIR__ . '/templates/News.php';
+//echo '<br /><pre>';
+//var_dump($users);
+
+//require_once __DIR__ . '/templates/News.php';
 
 
 

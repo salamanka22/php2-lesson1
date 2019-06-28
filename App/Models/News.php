@@ -24,7 +24,7 @@ class News extends Model
         }
         return false;
     }
-    public static function findAll($cnt)
+    public static function findAll(int $cnt)
     {
         $db = new Db();
         return $db->query(
