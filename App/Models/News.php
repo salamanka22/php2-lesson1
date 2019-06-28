@@ -5,6 +5,7 @@ namespace App\Models;
 
 use App\Db;
 use App\Model;
+use App;
 class News extends Model
 {
     const TABLE = 'news';
@@ -13,7 +14,7 @@ class News extends Model
     
     }
     public static function findById($id){
-        $db = new Db();
+        $db = \App\Db::instance();
         $result = $db->query(
             'SELECT * FROM ' . self::TABLE . ' WHERE id = '.$id,
             //'SELECT * FROM foo WHERE id = 2',
@@ -26,7 +27,7 @@ class News extends Model
     }
     public static function findAll(int $cnt)
     {
-        $db = new Db();
+        $db = \App\Db::instance();
         return $db->query(
             'SELECT * FROM ' . static::TABLE . ' LIMIT ' .$cnt,
             static::class

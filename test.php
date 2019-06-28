@@ -1,11 +1,11 @@
 <?php
 require_once 'autoload.php';
-$s = \App\Singleton::instance();
+$s = \App\Test::instance();
 $s->counter = 1;
 var_dump($s);
 
-$p = \App\Singleton::instance();
-var_dump($p);
+$q = \App\Test::instance();
+var_dump($q);
 
-$g = \App\Singleton::instance();
-var_dump($g);
+$e = \App\Test::instance();
+var_dump($e);

@@ -19,7 +19,7 @@ class User extends Model
     
     public static function findAll(int $cnt)
     {
-        $db = new Db();
+        $db = \App\Db::instance();
         return $db->query(
             'SELECT * FROM ' . static::TABLE,
             static::class
@@ -28,7 +28,7 @@ class User extends Model
     
     public static function findById($id)
     {
-        $db = new Db();
+        $db = \App\Db::instance();
         $result = $db->query(
             'SELECT * FROM ' . self::TABLE . ' WHERE id = '.$id,
             //'SELECT * FROM foo WHERE id = 2',
