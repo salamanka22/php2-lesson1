@@ -14,10 +14,19 @@ $user = new \App\Models\User();
 
 $user->name = 'Frodo';
 $user->email = 'pidar@gmail.com';
-
-
-
 $user->insert();
+
+/*
+ * Type-Hinting
+echo '<br /><hr />';
+function sum (string $a, int $b)
+{
+    echo $a + $b;
+}
+
+sum(1.9, 2.3);
+*/
+
 
 
 
