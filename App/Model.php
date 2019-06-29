@@ -38,10 +38,39 @@ abstract class Model
        $sql = "INSERT INTO " . static::TABLE . " (" . implode(',', $columns) . ") VALUES (" . implode(',', array_keys($values)) . ")";
        
        
-       echo $sql."<br />";
+       //echo $sql."<br />";
        
        $db = Db::instance();
        $res = $db->execute($sql, $values);
-       var_dump($res);
+       //var_dump($res);
+       //echo "<br />";
+       
+       $this->id = $db->id;
+       //echo $this->id;
+   }
+   
+   public function update()
+   {
+      //$sql = "UPDATE " . static::TABLE . "";
+   }
+   
+   public function save()
+   {
+       if(null == $this->id){
+           $this->insert();
+       }else{
+           $this->update();
+       }
+   }
+
+   public function delete($id){
+       $sql = "DELETE FROM ". static::TABLE . " WHERE id=".$id;
+       $db = Db::instance();
+       $res = $db->execute($sql);
+       if(true == $res and $db->rowCount > 0){
+           echo "Запись $id удачно удалена из таблицы ".static::TABLE . " затронуто строк: ".$db->rowCount;
+       }else{
+           echo "Ошибка удаления записи id = $id! Результат: $res затронуто строк: ".$db->rowCount;
+       }
    }
 }

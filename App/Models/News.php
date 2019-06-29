@@ -9,6 +9,8 @@ use App;
 class News extends Model
 {
     const TABLE = 'news';
+    public $title;
+    public $text;
     public function getName()
     {
     

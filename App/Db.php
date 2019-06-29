@@ -7,6 +7,7 @@
  */
 
 namespace App;
+//use \App\Config;
 
 interface DbRules
 {
@@ -19,9 +20,13 @@ class Db implements DbRules
 {
     use Singleton;
     protected $dbh;
+    public $rowCount;
+    public $config;
+    public $id;
     protected function __construct()
     {
-        $this->dbh = new \PDO('mysql:host=127.0.0.1;dbname=php22', 'root', '');
+        $this->config = \App\Config::instance();
+        $this->dbh = new \PDO($this->config->data['DB_DRIVER'].':host=' . $this->config->data['DB_HOST'] . ';dbname='.$this->config->data['DB_NAME'], $this->config->data['DB_USER'], $this->config->data['DB_PASSWORD']);
         //echo 'Hellow Db!)';
 
     }
@@ -31,9 +36,12 @@ class Db implements DbRules
         $sth = $this->dbh->prepare($sql);
         if(count($substitutions) > 0){
             $res = $sth->execute($substitutions);
+            $this->id = $this->dbh->lastInsertId();
         }else{
             $res = $sth->execute();
+            $this->rowCount = $sth->rowCount();
         }
+        
         
         return $res;
     }

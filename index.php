@@ -1,4 +1,5 @@
 <?php
+//declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: 7
@@ -10,14 +11,61 @@ require_once 'autoload.php';
 use \App\Model;
 use \App\Models\User;
 
+/*
 $user = new \App\Models\User();
+$user->name = 'Frodo';
+$user->email = 'pidar@gmail.com';
+$user->save();
+echo $user->id;
+*/
 
+$article = new \App\Models\News;
+$article->title = "Заголовок тестовой новости!";
+$article->text = "Полный текст для нашей новой тестовой новости. Ну и конечно фродо Пидар.";
+//$article->save();
+//echo $article->id;
+
+if(isset($_GET['id']) and !empty($_GET['id']) ){
+    $article->delete($_GET['id']);
+}
+
+/* Vivod novostey */
+$news = \App\Models\News::findAll(100);
+require_once __DIR__ . '/templates/News.php';
+/* Vivod novostey END */
+
+
+
+
+
+
+
+
+
+
+
+/*
+$user = new \App\Models\User();
 $user->name = 'Frodo';
 $user->email = 'pidar@gmail.com';
 $user->insert();
+*/
+
+
+
+//var_dump($config->data);
+
+
+
+
+
+
+
+
+
+
 
 /*
- * Type-Hinting
 echo '<br /><hr />';
 function sum (string $a, int $b)
 {
