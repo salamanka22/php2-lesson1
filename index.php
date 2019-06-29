@@ -10,6 +10,27 @@ require_once 'autoload.php';
 use \App\Model;
 use \App\Models\User;
 
+$user = new \App\Models\User();
+
+$user->name = 'Frodo';
+$user->email = 'pidar@gmail.com';
+
+
+
+$user->insert();
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 $news = \App\Models\News::findAll(3);
 $users = \App\Models\User::findAll(0);
 
@@ -20,6 +41,13 @@ function sendEmail(User $user, string $message)
 
 sendEmail($users[2], 'Hello!!!');
 
+
+
+
+
+
+
+*/
 
 //echo '<br /><pre>';
 //var_dump($users);

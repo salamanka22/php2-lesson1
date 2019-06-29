@@ -3,7 +3,6 @@
 
 namespace App;
 
-
 trait Singleton
 {
     protected static $instance;
