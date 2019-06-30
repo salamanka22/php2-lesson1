@@ -41,10 +41,26 @@ abstract class Model
    
    public function update()
    {
-      $sql = "UPDATE " . static::TABLE . " SET title='$this->title', text='$this->text' WHERE id='$this->id'";
+       /*
+       $columns = [];
+       $values = [];
+       foreach ($this as $k => $v){
+           if('id' == $k){
+               continue;
+           }
+           $columns[] = $k;
+           $values[':'.$k] = $v;
+       }
+       */
+       $values = [];
+       $values[':title'] = $this->title;
+       $values[':text'] = $this->text;
+       $values[':id'] = $this->id;
+       
+      //$sql = "UPDATE " . static::TABLE . " SET title='" . $this->title . "', text='" . $this->text . "' WHERE id='" . $this->id. "'";
+      $sql = "UPDATE " . static::TABLE . " SET title=:title, text=:text WHERE id=:id";
        $db = Db::instance();
-       $values = [$this->title, $this->text, $this->id];
-       $res = $db->execute($sql);
+       $res = $db->execute($sql, $values);
        if(true == $res and $db->rowCount > 0){
            $result = "Запись $this->id таблицы " . static::TABLE . " обновлена успешно затронуто строк: ".$db->rowCount;
        }else{
