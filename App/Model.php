@@ -6,7 +6,7 @@ namespace App;
 abstract class Model
 {
     public $id;
-    const TABLE = 'users';
+    const TABLE = 'news';
     abstract public static function findAll(int $cnt);
 
     
@@ -30,37 +30,37 @@ abstract class Model
            $columns[] = $k;
            $values[':'.$k] = $v;
        }
-       //var_dump($values);
        
-       //$sql='INSERT INTO' . static::TABLE . ' (' . implode(",", $columns) . ') VALUES (' . implode(",", $values) . ')';
-       
-       //$sql = "INSERT INTO " . static::TABLE . " (" . implode(',', $columns) . ") VALUES ('pidar@gmail.com','Frodo')";
        $sql = "INSERT INTO " . static::TABLE . " (" . implode(',', $columns) . ") VALUES (" . implode(',', array_keys($values)) . ")";
-       
-       
-       //echo $sql."<br />";
        
        $db = Db::instance();
        $res = $db->execute($sql, $values);
-       //var_dump($res);
-       //echo "<br />";
-       
        $this->id = $db->id;
-       //echo $this->id;
+       return $res;
    }
    
    public function update()
    {
-      //$sql = "UPDATE " . static::TABLE . "";
+      $sql = "UPDATE " . static::TABLE . " SET title='$this->title', text='$this->text' WHERE id='$this->id'";
+       $db = Db::instance();
+       $values = [$this->title, $this->text, $this->id];
+       $res = $db->execute($sql);
+       if(true == $res and $db->rowCount > 0){
+           $result = "Запись $this->id таблицы " . static::TABLE . " обновлена успешно затронуто строк: ".$db->rowCount;
+       }else{
+           $result = "Ошибка обновления записи id = $this->id в таблице " . static::TABLE . " Результат: $res затронуто строк: ".$db->rowCount;
+       }
+       return $result;
    }
    
    public function save()
    {
        if(null == $this->id){
-           $this->insert();
+           $result = $this->insert();
        }else{
-           $this->update();
+           $result = $this->update();
        }
+       return $result;
    }
 
    public function delete($id){

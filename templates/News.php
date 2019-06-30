@@ -5,5 +5,7 @@ foreach($news as $news_obj){
     echo '<p>' . $news_obj->text . '</p>';
     echo '<p><a href="article.php?id=' . $news_obj->id . '">Подробнее...</a></p>';
     echo '<p><a href="index.php?id=' . $news_obj->id . '">Удалить новость</a></p>';
+    echo '<p><a href="admin.php?id=' . $news_obj->id . '">Редактировать новость</a></p>';
     echo '<br /><hr />';
 }
+echo '<p><a href="admin.php">Добавить новость</a></p>';
