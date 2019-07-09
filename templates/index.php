@@ -17,6 +17,8 @@
    <div class="panel-heading">
        <?php if (!empty($user->name)): ?>
            <?php echo $user->name; ?>
+       <?php else: ?>
+       <?php echo 'No name!!!'; ?>
        <?php endif; ?>
    </div>
    <div class="panel-body">
