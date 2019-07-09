@@ -11,6 +11,9 @@ require_once 'autoload.php';
 use \App\Model;
 use \App\Models\User;
 
+$users = \App\Models\User::findAll(0);
+
+//$users = [1,2,3];
 require_once __DIR__.'/templates/index.php';
 /*
 $article = new \App\Models\News;

@@ -12,6 +12,20 @@
 </head>
 <body>
 <h1>Hello, world!</h1>
+<?php foreach ($users as $user): ?>
+<div class="panel panel-default">
+   <div class="panel-heading">
+       <?php if (!empty($user->name)): ?>
+           <?php echo $user->name; ?>
+       <?php endif; ?>
+   </div>
+   <div class="panel-body">
+       <?php if (!empty($user->email)): ?>
+           <?php echo $user->email; ?>
+       <?php endif; ?>
+   </div>
+</div>
+<?php endforeach; ?>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
