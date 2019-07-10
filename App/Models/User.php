@@ -11,12 +11,26 @@ namespace App\Models;
 use App\Db;
 use App\Model;
 
+/**
+ * Class User
+ * @package App\Models
+ */
 class User extends Model
 {
     const TABLE = 'users';
+    /**
+     * @var
+     */
     public $email;
+    /**
+     * @var
+     */
     public $name;
     
+    /**
+     * @param int $cnt
+     * @return mixed
+     */
     public static function findAll(int $cnt)
     {
         $db = \App\Db::instance();
@@ -26,6 +40,10 @@ class User extends Model
         );
     }
     
+    /**
+     * @param $id
+     * @return bool
+     */
     public static function findById($id)
     {
         $db = \App\Db::instance();

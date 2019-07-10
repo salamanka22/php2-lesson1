@@ -11,10 +11,18 @@ require_once 'autoload.php';
 use \App\Model;
 use \App\Models\User;
 
-$users = \App\Models\User::findAll(0);
+$user = new \App\Models\User();
+
+$view = new \App\View;
+$view->users = \App\Models\User::findAll(0);
+$view->title = 'Мой крутой сайт!';
+$view->display(__DIR__.'/templates/index.php');
+
+
+//var_dump($view->users);
 
 //$users = [1,2,3];
-require_once __DIR__.'/templates/index.php';
+//require_once __DIR__.'/templates/index.php';
 /*
 $article = new \App\Models\News;
 $article->title = "Заголовок тестовой новости!";
