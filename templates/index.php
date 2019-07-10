@@ -8,11 +8,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
-    <title><?php echo $this->title; ?></title>
+    <title><?php echo $title; ?></title>
 </head>
 <body>
-<h1><?php echo $this->title; ?></h1>
-<?php foreach ($this->users as $user): ?>
+<h1><?php echo $title; ?></h1>
+<?php foreach ($users as $user): ?>
 <div class="panel panel-default">
    <div class="panel-heading">
        <?php if (!empty($user->name)): ?>

@@ -16,7 +16,9 @@ $user = new \App\Models\User();
 $view = new \App\View;
 $view->users = \App\Models\User::findAll(0);
 $view->title = 'Мой крутой сайт!';
-$view->display(__DIR__.'/templates/index.php');
+$view->header = 'Да, просто супер сайт!';
+echo count($view);
+//$view->display(__DIR__.'/templates/index.php');
 
 
 //var_dump($view->users);
